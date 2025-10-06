@@ -9,11 +9,14 @@ namespace TestProject2
     public class WorkingWithWebTable
     {
         IWebDriver driver;
+        ChromeOptions options;
 
         [SetUp]
         public void SetUp()
         {
             // Create object of ChromeDriver
+            options = new ChromeOptions();
+            options.AddArgument("--headless");
             driver = new ChromeDriver();
 
             // Add implicit wait
@@ -65,6 +68,7 @@ namespace TestProject2
         {
             // Quit the driver
             driver.Quit();
+            driver.Dispose();
         }
     }
 }
