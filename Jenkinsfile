@@ -2,19 +2,19 @@ pipeline {
     agent any
 
     stages {
-        stage('Build') {
+        stage('Restore dependencies') {
             steps {
-                echo 'Building..'
+                bat 'dotnet restore SeleniumBasicExercise.sln'
             }
         }
-        stage('Test') {
+        stage('Dotnet build') {
             steps {
-                echo 'Testing..'
+                bat 'dotnet build SeleniumBasicExercise.sln --no-restore'
             }
         }
-        stage('Deploy') {
+        stage('Run TestProject1') {
             steps {
-                echo 'Deploying....'
+                bat 'test TestProject1/TestProject1.csproj --verbosity normal'
             }
         }
     }
