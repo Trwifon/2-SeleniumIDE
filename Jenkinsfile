@@ -14,7 +14,7 @@ pipeline {
         }
         stage('Run TestProject1') {
             steps {
-                bat 'test TestProject1/TestProject1.csproj --verbosity normal'
+                bat 'dotnet test TestProject1/TestProject1.csproj --verbosity normal'
             }
         }
     }
